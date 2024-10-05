@@ -10,6 +10,7 @@ const routes: Routes = [
     component: LayoutPageComponent,
     children: [
       { path: 'new-vehicle', component: VehicleRegistrationComponent },
+      { path: 'new-vehicle/:id', component: VehicleRegistrationComponent },
       { path: 'list-vehicle', component: ListVehicleComponent },
       { path: '**', redirectTo: 'new-vehicle' },
     ]

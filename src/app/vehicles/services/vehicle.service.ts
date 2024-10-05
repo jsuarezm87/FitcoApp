@@ -38,5 +38,9 @@ export class VehicleService {
         );
   }
 
+  getVehicles(id: number):Observable<Vehicle[]> {
+    return this.http.get<Vehicle[]>(`${ this.baseUrl }/getVehicle/${id}`);
+  }
+
 
 }

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit  } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Vehicle } from '../../interfaces/vehicle.interface';
 import { VehicleService } from '../../services/vehicle.service';
 import Swal from 'sweetalert2';
@@ -10,7 +11,7 @@ import Swal from 'sweetalert2';
 })
 export class VehicleRegistrationComponent {
 
-    constructor( private vehicleService: VehicleService ) {}
+    constructor( private route: ActivatedRoute, private vehicleService: VehicleService ) {}
 
     initForm = {
         id: 0,
@@ -21,7 +22,16 @@ export class VehicleRegistrationComponent {
         licensePlate: ''
     };
 
-    vehicle: Vehicle = { ...this.initForm }
+  vehicle: Vehicle = { ...this.initForm }
+
+  ngOnInit(): void {
+      this.route.paramMap.subscribe(params => {
+        const id = params.get('id');
+        if (id) {
+          this.vehicleService.getVehicles(+id).subscribe( vehicle => this.vehicle = vehicle[0]);
+        }
+      });
+  }
 
   registerVehicle() {
     this.vehicleService.createVehicle(this.vehicle).subscribe(response => {

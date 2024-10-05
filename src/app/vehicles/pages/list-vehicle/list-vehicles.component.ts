@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';;
 import { VehicleService } from '../../services/vehicle.service';
 import { Vehicle } from '../../interfaces/vehicle.interface';
+import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -14,7 +15,7 @@ export class ListVehicleComponent implements OnInit {
   public vehicles: Vehicle[] = [];
   displayedColumns: string[] = ['edit', 'id', 'make', 'model', 'year', 'color', 'licensePlate', 'price', 'delete'];
 
-  constructor( private vehicleService: VehicleService ) {}
+  constructor( private router: Router, private vehicleService: VehicleService ) {}
 
   ngOnInit(): void {
     this.vehicleService.listVehicles().subscribe( vehicle => this.vehicles = vehicle );
@@ -46,6 +47,10 @@ export class ListVehicleComponent implements OnInit {
         });
       }
     });
+  }
+
+  editVehicle (id: number) {
+    this.router.navigate(['/vehicles/new-vehicle', id]);
   }
 
 }
