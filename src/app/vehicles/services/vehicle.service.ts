@@ -24,4 +24,12 @@ export class VehicleService {
 }
 
 
+  listVehicles():Observable<Vehicle[]> {
+    return this.http.get<Vehicle[]>(`${ this.baseUrl }/listVehicles`);
+  }
+
+
+
+
+
 }
