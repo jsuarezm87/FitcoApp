@@ -29,16 +29,18 @@ export class VehicleRegistrationComponent {
           console.log('Vehículo creado:', response);
           Swal.fire({
             title: 'Vehículo creado',
-            // text: 'Vehículo creado',
             icon: 'info', // 'success', 'error', 'warning', 'info', 'question'
             confirmButtonText: 'Aceptar',
             width: '250px'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              this.resetForm();
+            }
           });
         } else {
           console.error('Error al crear el vehículo.');
           Swal.fire({
             title: 'Error al crear el vehículo',
-            // text: 'Error al crear el vehículo',
             icon: 'warning', // 'success', 'error', 'warning', 'info', 'question'
             confirmButtonText: 'Aceptar',
             width: '300px'

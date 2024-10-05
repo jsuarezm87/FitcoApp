@@ -47,8 +47,7 @@
       <ng-container matColumnDef="delete">
         <th mat-header-cell *matHeaderCellDef><mat-icon>delete</mat-icon></th>
         <td mat-cell *matCellDef="let vehicle">
-          <button mat-icon-button>
-          <!-- <button mat-icon-button (click)="editVehicle(vehicle)"> -->
+          <button mat-icon-button (click)="deleteVehicle(vehicle.id)">
             <mat-icon>delete</mat-icon>
           </button>
         </td>

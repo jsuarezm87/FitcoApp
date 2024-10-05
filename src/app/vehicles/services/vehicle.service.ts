@@ -21,15 +21,22 @@ export class VehicleService {
                 throw error;
             })
         );
-}
+  }
 
 
   listVehicles():Observable<Vehicle[]> {
     return this.http.get<Vehicle[]>(`${ this.baseUrl }/listVehicles`);
   }
 
-
-
+  deleteVehicle(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/deleteVehicles/${id}`)
+        .pipe(
+            catchError(error => {
+                console.error('Error al eliminar vehículo:', error);
+                throw error;
+            })
+        );
+  }
 
 
 }
