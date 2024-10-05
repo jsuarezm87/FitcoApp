@@ -1,0 +1,116 @@
+<h1>Register Vehicle</h1>
+
+<mat-divider class="mb-2"></mat-divider>
+
+<div class="grid">
+
+  <div class="col-12 sm:col-6">
+    <mat-card>
+      <mat-card-content>
+
+        <div class="grid">
+
+          <mat-form-field class="col-12 sm:col-6">
+            <mat-label>Make</mat-label>
+            <input 
+              matInput 
+              id="make" 
+              [(ngModel)]="vehicle.make" 
+              (ngModelChange)="setProperty('make', $event)"
+              name="make" 
+              required
+            >
+          </mat-form-field>
+
+          <mat-form-field class="col-12 sm:col-6">
+            <mat-label>Model</mat-label>
+            <input 
+              matInput 
+              id="model" 
+              [(ngModel)]="vehicle.model" 
+              (ngModelChange)="setProperty('model', $event)"
+              name="model" 
+              required
+            >
+          </mat-form-field>
+
+
+          <mat-form-field class="col-12 sm:col-6">
+            <mat-label>Year</mat-label>
+            <input 
+              matInput 
+              id="year" 
+              type="number" 
+              [(ngModel)]="vehicle.year" 
+              name="year" 
+              required
+            >
+          </mat-form-field>
+
+          <mat-form-field class="col-12 sm:col-6">
+            <mat-label>Color</mat-label>
+            <input
+              matInput 
+              id="color" 
+              [(ngModel)]="vehicle.color" 
+              (ngModelChange)="setProperty('color', $event)"
+              name="color" 
+              required
+            >
+          </mat-form-field>
+
+          <mat-form-field class="col-12 sm:col-6">
+            <mat-label>license Plate </mat-label>
+            <input 
+              matInput 
+              id="licensePlate" 
+              [(ngModel)]="vehicle.licensePlate" 
+              (ngModelChange)="setProperty('licensePlate', $event)"
+              name="licensePlate" 
+              required
+            >
+          </mat-form-field>
+
+          <mat-form-field class="col-12 sm:col-6">
+            <mat-label>Price </mat-label>
+            <input 
+              matInput 
+              id="price" 
+              type="number" 
+              [(ngModel)]="vehicle.price" 
+              name="price" 
+              required
+            >
+          </mat-form-field>
+
+         
+        </div>
+
+        <div class="flex justify-content-between">
+          <button
+            mat-flat-button
+            color="warn"
+            (click)="resetForm()"
+          >
+            Borrar
+          </button>
+
+          <button
+            mat-flat-button
+            color="primary"
+            (click)="registerVehicle()"
+          >
+            <mat-icon>save</mat-icon>
+            Guardar
+          </button>
+        </div>
+
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+
+</div>
+
+
+
